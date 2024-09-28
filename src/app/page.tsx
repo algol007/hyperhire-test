@@ -142,7 +142,7 @@ export default function Home() {
               {dummies.map((data, idx) => (
                 <div className="flex gap-2" key={idx}>
                   <Image src={Checkbox} width={20} height={20} alt="checkbox" />
-                  <p className="text-sm font-bold">{data.name}</p>
+                  <p className="text-sm font-bold">{data.text}</p>
                 </div>
               ))}
             </div>
