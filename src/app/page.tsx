@@ -1,100 +1,193 @@
-import Image from "next/image";
+'use client';
+
+import Image from 'next/image';
+import Logo from '@/assets/logo.svg';
+import LogoWhite from '@/assets/logo-white.svg';
+import Price from '@/assets/price.svg';
+import Checkbox from '@/assets/checkbox.svg';
+import Link from 'next/link';
+import CardFooter from '@/components/CardFooter';
+import CardHero from '@/components/CardHero';
+import Code from '@/assets/code.svg';
+import CardProfile from '@/components/CardProfile';
+
+import { Pagination, EffectCoverflow } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-coverflow';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="homepage">
+      <main className="hero overflow-hidden">
+        <div className="max-w-7xl mx-auto text-white">
+          <nav className="h-[60px] flex items-center px-8 justify-between">
+            <Image src={LogoWhite} width={114} height={21} alt="hyperhire" />
+            <div className="flex gap-8">
+              <div>
+                <select className="outline-none bg-transparent">
+                  <option value="채용">채용</option>
+                  <option value="해외 개발자 원격 채용">해외 개발자 원격 채용</option>
+                  <option value="외국인 원격 채용 (비개발 직군)">외국인 원격 채용 (비개발 직군)</option>
+                  <option value="한국어 가능 외국인 채용">한국어 가능 외국인 채용</option>
+                </select>
+              </div>
+              <div>해외 개발자 활용 서비스</div>
+            </div>
+            <div>
+              <button className="bg-white text-[#4A77FF] font-bold rounded px-6 py-1.5">문의하기</button>
+            </div>
+          </nav>
+          <div className="p-4 md:p-8 flex font-bold flex-wrap mb-8">
+            <div className="lg:w-1/2 w-full">
+              <div className="bubble my-12">풀타임, 파트타임</div>
+              <div className="font-bold mb-8">
+                <h1 className="text-4xl md:text-5xl flex flex-col gap-4">
+                  <div>최고의 실력을 가진</div>
+                  <div>외국인 인재를 찾고 계신가요?</div>
+                </h1>
+              </div>
+              <div className="mb-16">
+                <h2 className="text-2xl mb-8 flex flex-col gap-2">
+                  <div>법률 및 인사관리 부담없이</div>
+                  <div>1주일 이내에 원격으로 채용해보세요.</div>
+                </h2>
+                <p className="text-xl">개발자가 필요하신가요?</p>
+              </div>
+              <div className="flex gap-8 mb-12">
+                <div>
+                  <div className="text-xl border-t border-white py-2">평균 월 120만원</div>
+                  <div className="opacity-80">임금을 해당 국가를 기준으로 계산합니다.</div>
+                </div>
+                <div>
+                  <div className="text-xl border-t border-white py-2">최대 3회 인력교체</div>
+                  <div className="opacity-80">막상 채용해보니 맞지 않아도 걱정하지 마세요.</div>
+                </div>
+                <div>
+                  <div className="text-xl border-t border-white py-2">평균 3일, 최대 10일</div>
+                  <div className="opacity-80">급하게 사람이 필요한 경우에도 빠른 채용이 가능합니다.</div>
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2 w-full md:p-8">
+              <div className="flex justify-center">
+                <div className="bubble-price mb-12 flex items-center gap-2">
+                  <Image src={Price} width={26} height={26} alt="hyperhire" />
+                  <div>월 100만원</div>
+                </div>
+              </div>
+              <Swiper
+                effect={'coverflow'}
+                grabCursor={true}
+                slidesPerView={1.75}
+                centeredSlides={true}
+                modules={[EffectCoverflow, Pagination]}
+                className="mySwiper">
+                <SwiperSlide>
+                  <CardProfile />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <CardProfile />
+                </SwiperSlide>
+                <SwiperSlide>
+                  <CardProfile />
+                </SwiperSlide>
+              </Swiper>
+            </div>
+          </div>
+          <div className="md:block hidden">
+            <div className="flex p-8 gap-4 mb-16">
+              <CardHero />
+              <CardHero />
+              <CardHero />
+              <CardHero />
+              <CardHero />
+            </div>
+          </div>
+          <div className="md:hidden block mb-12 p-8">
+            <div className="grid gap-4 grid-cols-2">
+              <div className="flex gap-2">
+                <Image src={Checkbox} width={20} height={20} alt="checkbox" />
+                <p className="text-sm font-bold">한국어 능력</p>
+              </div>
+              <div className="flex gap-2">
+                <Image src={Checkbox} width={20} height={20} alt="checkbox" />
+                <p className="text-sm font-bold">한국어 능력</p>
+              </div>
+              <div className="flex gap-2">
+                <Image src={Checkbox} width={20} height={20} alt="checkbox" />
+                <p className="text-sm font-bold">한국어 능력</p>
+              </div>
+              <div className="flex gap-2">
+                <Image src={Checkbox} width={20} height={20} alt="checkbox" />
+                <p className="text-sm font-bold">한국어 능력</p>
+              </div>
+            </div>
+            <div className="text-[#FBFF23] font-bold mt-8">개발자가 필요하신가요?</div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      <footer className="flex font-bold py-20 max-w-7xl mx-auto px-4 flex-wrap">
+        <div className="w-full lg:w-1/3">
+          <div className="mb-12 flex flex-col gap-4">
+            <Image src={Logo} width={187} height={34} alt="hyperhire" />
+            <p className="text-sm">우리는 국가의 장벽을 넘어 최고의 인재를 매칭해드립니다.</p>
+            <div className="font-bold text-[13px]">
+              <Link href="'tel:010-0000-0000">010-0000-0000</Link>
+            </div>
+            <div className="font-bold text-[13px]">
+              <Link href="'mailto:aaaaa@naver.com">aaaaa@naver.com</Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:pl-8 w-full lg:w-2/3">
+          <div className="grid gap-4 lg:grid-cols-4 grid-cols-2">
+            <CardFooter />
+            <CardFooter />
+            <CardFooter />
+            <CardFooter />
+          </div>
+        </div>
+
+        <div className="w-full lg:w-1/3 mt-8 md:mt-0 text-[13px]">
+          <div className="font-bold">
+            <div className="flex gap-4">
+              <ul className="flex flex-col gap-2">
+                <li>상호명</li>
+                <li>하이퍼하이어</li>
+                <li>Hyperhire India Private Limited</li>
+              </ul>
+              <ul className="flex flex-col gap-2">
+                <li>대표 CEO</li>
+                <li>김주현</li>
+                <li>Juhyun Kim</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* divider */}
+
+        <div className="lg:pl-8 w-full lg:w-2/3 mt-8 md:mt-0 text-[13px]">
+          <div className="flex gap-4 flex-wrap md:flex-nowrap">
+            <ul className="flex flex-col gap-2">
+              <li>사업자등록번호 CIN</li>
+              <li>427-86-01187</li>
+              <li>U74110DL2016PTC290812 </li>
+            </ul>
+            <ul className="flex flex-col gap-2">
+              <li>주소 ADDRESS</li>
+              <li>서울특별시 강남대로 479, 지하 1층 238호 </li>
+              <li>D-138, Street number 11, Jagjeet Nagar, North East Delhi, New Delhi, 110053 India </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="w-full mt-8 text-[13px]">
+          <span>ⓒ 2023 Hyperhire</span>
+        </div>
       </footer>
     </div>
   );

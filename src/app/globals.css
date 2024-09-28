@@ -9,8 +9,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --background: #0a0a0a; */
+    --foreground: #5e626f;
   }
 }
 
@@ -24,4 +24,196 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.hero {
+  background-image: linear-gradient(#26c2b9, #288be7);
+  min-height: 900px;
+}
+
+/*Card*/
+
+/* Card container */
+.card {
+  background-color: #fff;
+  border-radius: 20px;
+  max-width: 300px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* Profile image section */
+.card-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+  border: 4px solid #fff;
+}
+
+/* Flag style (adjust position if needed) */
+.flag {
+  width: 25px;
+  height: 15px;
+  background: linear-gradient(to bottom, #ffd700 33%, #0000ff 33%, #ff0000 66%);
+  border: 1px solid #333;
+  border-radius: 2px;
+  position: absolute;
+  bottom: 10px;
+  right: 80px;
+}
+
+/* Name and role */
+.name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.role {
+  font-size: 1rem;
+  color: #2b6ff6;
+  margin-bottom: 15px;
+}
+
+/* Skill tags container */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tag {
+  background-color: #eff6fc;
+  border: 1px solid #b4dbf4;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.carousel {
+  overflow: hidden; /* Hide overflow for infinite scrolling effect */
+  width: 100%; /* Full width of container */
+}
+
+.carousel-track {
+  display: flex;
+  width: calc(300px * 6); /* Width should account for all the items */
+  animation: scroll 20s linear infinite;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 300px; /* Set the width of each CardProfile component */
+  margin-right: 20px; /* Space between cards */
+}
+
+/* Keyframe animation for infinite scroll */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%); /* Move entire track left by 100% of its width */
+  }
+}
+
+/* Optional styling for CardProfile components (if needed) */
+.carousel-item > div {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.swiper {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.bubble {
+  position: relative;
+  background-color: #fff;
+  color: #5de7ef;
+  font-size: 1.2rem;
+  font-family: 'Arial', sans-serif;
+  padding: 10px 20px;
+  border-radius: 15px;
+  width: fit-content;
+  display: inline-block;
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 32px;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-top-color: #fff;
+  border-bottom: 0;
+  margin-left: -15px;
+  margin-bottom: -15px;
+}
+
+.bubble-price {
+  position: relative;
+  background-color: #e9f7ef;
+  color: #00c696;
+  font-size: 1.2rem;
+  font-family: 'Arial', sans-serif;
+  padding: 10px 20px;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+.bubble-price::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 75px;
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-top-color: #e9f7ef;
+  border-bottom: 0;
+  margin-left: -15px;
+  margin-bottom: -15px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.homepage::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.homepage {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
